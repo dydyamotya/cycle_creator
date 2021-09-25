@@ -1,0 +1,4 @@
+numpy==1.21.2
+pyqtgraph==0.12.2
+PySide2==5.15.2
+shiboken2==5.15.2

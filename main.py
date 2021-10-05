@@ -57,6 +57,7 @@ class MyWidget(QtWidgets.QWidget):
         buttons_layout.addWidget(self.save_button)
         self.save_button.clicked.connect(self.save_data)
         self.open_button = QtWidgets.QPushButton(text="Open")
+        self.open_button.clicked.connect(self.open_data)
         buttons_layout.addWidget(self.open_button)
 
         self.generate_button = QtWidgets.QPushButton(self, text="Generate")

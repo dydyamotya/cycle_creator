@@ -1,14 +1,15 @@
+import sys
+
 from PySide2 import QtWidgets, QtCore, QtGui
 import pyqtgraph as pg
 import logging
 import numpy as np
 import pathlib
+import argparse
 
 from PySide2.QtCore import QSettings
 from PySide2.QtWidgets import QAction
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger()
 
 
 class MyMainWindow(QtWidgets.QMainWindow):
@@ -211,7 +212,18 @@ class MyTableWidget(QtWidgets.QTableWidget):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--debug", action="store_true")
+
+    args = parser.parse_args()
+
+    logging.basicConfig(level=logging.DEBUG if args.debug else logging.INFO)
+    logger = logging.getLogger()
+
+    path_to_py = pathlib.Path(sys.argv[0])
+    main_dir = path_to_py.parent
     app = QtWidgets.QApplication([])
+    app.setStyleSheet((main_dir / "style.ui").open("r").read())
     main_window = MyMainWindow()
     main_window.show()
 

@@ -211,7 +211,6 @@ class MyTableWidget(QtWidgets.QTableWidget):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
-    app.setStyleSheet(open("style.ui", "r").read())
     main_window = MyMainWindow()
     main_window.show()
 

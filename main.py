@@ -72,6 +72,7 @@ class MyWidget(QtWidgets.QWidget):
 
     def generate_file(self):
         data = self.process_data(self.table.collect_data())
+        data[:, 0] = data[:, 0] * 1000
         self._save_data(data, "Save data", "DAT files (*.dat)")
 
 
@@ -172,14 +173,6 @@ class MyWidget(QtWidgets.QWidget):
             data = np.array(result_list)
             self.table.fill_data(data)
 
-
-
-
-
-
-
-
-
 class MyPlotWidget(pg.PlotWidget):
     def __init__(self, *args):
         super(MyPlotWidget, self).__init__(*args)
@@ -218,6 +211,7 @@ class MyTableWidget(QtWidgets.QTableWidget):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
+    app.setStyleSheet(open("style.ui", "r").read())
     main_window = MyMainWindow()
     main_window.show()
 

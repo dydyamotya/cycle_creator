@@ -118,7 +118,7 @@ class MyWidget(QtWidgets.QWidget):
             times = np.hstack(x_list)
             temperatures = np.hstack(y_list)
             zeros = np.zeros(temperatures.shape)
-            new_data = np.vstack((times, temperatures, zeros, zeros, zeros))
+            new_data = np.vstack((times, temperatures, zeros, zeros, zeros)).T
 
 
             return new_data
@@ -169,7 +169,7 @@ class MyWidget(QtWidgets.QWidget):
             width, low_temp, high_temp, step, max_interval = numbers
             result_list = []
             timer = 1
-            for temp in range(low_temp, high_temp, step):
+            for temp in range(low_temp, high_temp-step, step):
                 actual_high = temp + step
                 actual_low = max(low_temp, actual_high - max_interval)
                 for temp_ in (actual_low, actual_high):

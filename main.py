@@ -115,7 +115,11 @@ class MyWidget(QtWidgets.QWidget):
                 ys = np.ones(xs.shape) * data[row, 1]
                 x_list.append(xs)
                 y_list.append(ys)
-            new_data = np.vstack((np.hstack(x_list), np.hstack(y_list))).T
+            times = np.hstack(x_list)
+            temperatures = np.hstack(y_list)
+            zeros = np.zeros(temperatures.shape)
+            new_data = np.vstack((times, temperatures, zeros, zeros, zeros))
+
 
             return new_data
 
